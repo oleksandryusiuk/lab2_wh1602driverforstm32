@@ -18,25 +18,25 @@ volatile uint8_t sendCount = 0;
   * @retval None
   */
 void wh1602_Init(void) {
-	HAL_Delay(15); 					// wait > 15 ms after power on
+	HAL_Delay(15); 				// wait > 15 ms after power on
 	/* 0000 1100 */
 	wh1602_SendData(0x0C);  		// still in 8-bit mode...
-	HAL_Delay(5); 					// wit > 4.1 ms;
+	HAL_Delay(5); 				// wit > 4.1 ms;
 	wh1602_SendData(0x0C);			// still in 8-bit mode...
-	HAL_Delay(1); 					// wait > 100 microseconds
+	HAL_Delay(1); 				// wait > 100 microseconds
 	wh1602_SendData(0x0C);			// still in 8-bit mode...
 
 	wh1602_SendData(0x08);  		// now we are in 4-bit mode;
 
-	/* 0000 1000 */					// now when we are in 4-bit mode,
+	/* 0000 1000 */				// now when we are in 4-bit mode,
 	wh1602_SendData(0x08);			// we are able to set 2 line mode
-	/* 0011 0000 */					// and need to specify that we are
+	/* 0011 0000 */				// and need to specify that we are
 	wh1602_SendData(0x30);			// in 4-bit mode again;
 
 	wh1602_CheckBF();
 
 	wh1602_SendData(0x0);			// display ON/OFF control: First nibble;
-	/* 00111000 */					//
+	/* 00111000 */				//
 	wh1602_SendData(0x38);			// Turning on Display and cursor.
 
 	wh1602_CheckBF();
@@ -44,8 +44,8 @@ void wh1602_Init(void) {
 	wh1602_SendData(0x0);			// entry mode set: First nibble;
 	/* 0001 1000 */
 	wh1602_SendData(0x18);			// sets mode to increment the address
-									// by one and shift cursor to the right
-									// when writing symbols.
+						// by one and shift cursor to the right
+						// when writing symbols.
 
 }
 
