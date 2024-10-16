@@ -108,10 +108,6 @@ void wh1602_SendChar(char ch)
   * @param None
   * @retval None
   */
-void wh1602_NullCounter(void)
-{
-	sendCount = 0;
-}
 void wh1602_CheckBF(void)
 {
 	uint32_t try = 1000;	// counter variable to calculate checks

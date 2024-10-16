@@ -35,37 +35,10 @@ void LCD_SendChar(char ch)
  */
 void LCD_SendString(char *str, uint8_t size)
 {
-	if (size > 16)
-	{
-		int nameCounter = 0;
-		int i = 0;
-		while (str[i] != ' ')
-		{
-			nameCounter++;
-			i++;
-		}
-
-		for (uint8_t j = 0; j < nameCounter; j++)
-		{
-		    wh1602_SendChar(str[j]);
-		}
-		wh1602_NullCounter();
-		wh1602_SendData(0b00110000);
-		wh1602_SendData(0b00000000);
-
-		for (uint8_t j = nameCounter+1; j < size; j++)
-		{
-			wh1602_SendChar(str[j]);
-		}
-	}
-
-	else
-	{
-		for (uint8_t i = 0; i < size; i++)
-		{
-			wh1602_SendChar(str[i]);
-		}
-	}
+    for (uint8_t i = 0; i < size; i++)
+    {
+        wh1602_SendChar(str[i]);
+    }
 }
 
 /**
